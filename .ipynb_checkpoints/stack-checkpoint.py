@@ -1,20 +1,12 @@
-import numpy as np
 class Stack:
     def __init__(self):
-        self.items = np.array([])
-
+        self.items = []
 
     def is_empty(self):
         return len(self.items) == 0
 
     def push(self, item):
-        Ary2=item[1:]
-        #for i in np.arrayitem:
-        print("Array in push function:",Ary2)
-        for i in Ary2:
-          self.items=np.append(self.items,i)
-        print("Items appended")
-       # self.items.append(item2)
+        self.items.append(item)
 
     def pop(self):
         if self.is_empty():
@@ -28,30 +20,17 @@ class Stack:
 
     def size(self):
         return len(self.items)
-    def list(self):
-       # return (self.items[::-1])   returning in reverse order
-        return (self.items) 
-
-
 
 # User input example
 if __name__ == "__main__":
     stack = Stack()
     while True:
-        print("\nOptions: push <item>, pop, peek, size, is_empty, quit, list")
+        print("\nOptions: push <item>, pop, peek, size, is_empty, quit")
         command = input("Enter command: ").strip().lower()
-        print (command)
-        Ary1=np.array([])
-        print(type(Ary1))
         if command.startswith("push"):
-            Ary2 = command.split(" ",maxsplit=100)
-            Ary1=np.array(Ary2)
-           # print (item1 , item2)
-            print("Ary1 type is", type(Ary1))
-            print("Array is",Ary1)
-            print(type(Ary1))
-            stack.push(Ary1)
-            #print(f"Pushed {item1} Pushed {item2}")
+            _, item = command.split(maxsplit=1)
+            stack.push(item)
+            print(f"Pushed {item}")
         elif command == "pop":
             try:
                 print("Popped:", stack.pop())
@@ -66,8 +45,6 @@ if __name__ == "__main__":
             print("Stack size:", stack.size())
         elif command == "is_empty":
             print("Stack is empty?", stack.is_empty())
-        elif command == "list":
-            print("Stack list?", stack.list())
         elif command == "quit":
             break
         else:
